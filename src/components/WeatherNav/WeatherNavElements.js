@@ -5,8 +5,7 @@ export const NavContainer = styled.div`
     height: 100vh;
     width: 30%;
     z-index: 3;
-    backdrop-filter: blur(20px);  
-
+    backdrop-filter: blur(25px);  
     
     @media (max-width: 768px){
         display: none;
@@ -29,9 +28,13 @@ export const NavLocation= styled.div`
 `;
 
 export const NavLocationWrap= styled.div`
+`;
+
+export const Form = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+   
 `;
 
 export const SearchInput= styled.input`
@@ -65,7 +68,9 @@ export const PlacesText= styled.p`
 
 export const Hr= styled.hr`
     width: 100%;
+    height: 1px;
     margin-bottom: 50px;
+    background-color: #aaa;
  
 `
 

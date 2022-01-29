@@ -1,8 +1,10 @@
-import React from 'react';
-import { DetailsInfo, DetailsSection, DetailsText, Hr, NavBlur, NavContainer, NavLocation, NavLocationPlaces, NavLocationWrap, NavWeatherDetails, NavWeatherTitle, NavWrap, PlacesText, SearchBtn, SearchInput } from './WeatherNavElements';
+import React, { useState } from 'react';
+import { DetailsInfo, DetailsSection, DetailsText, Form, Hr, NavBlur, NavContainer, NavLocation, NavLocationPlaces, NavLocationWrap, NavWeatherDetails, NavWeatherTitle, NavWrap, PlacesText, SearchBtn, SearchInput } from './WeatherNavElements';
 import {BsSearch} from 'react-icons/bs'
 
-const WeatherNav = () => {
+const WeatherNav = ({weatherInfo, weatherDetails, wind, handleChange, handleSubmit, input, rain}) => {
+   
+
   return (
       <NavContainer>
           <NavBlur/>
@@ -10,9 +12,23 @@ const WeatherNav = () => {
               {/* Localização e a parte de pesquisa */}
               <NavLocation>
                   <NavLocationWrap>
-                    <SearchInput placeholder="Pesquise uma localização"/>
-                    <SearchBtn><BsSearch/></SearchBtn>
-                  </NavLocationWrap>    
+                      <Form action="#">
+                        <SearchInput
+                            placeholder="Pesquise uma localização"
+                            type="search"
+                            value={input}
+                            onChange={handleChange}
+                        />
+
+                        <SearchBtn
+                            type="submit"
+                            onClick={handleSubmit}
+                        >
+                        <BsSearch/>
+                        </SearchBtn>
+                      </Form>
+                  </NavLocationWrap>   
+
                   <NavLocationPlaces>
                   <Hr/>
                       <PlacesText>São Paulo</PlacesText>
@@ -27,18 +43,18 @@ const WeatherNav = () => {
                     <NavWeatherTitle>Detalhes do clima</NavWeatherTitle>
 
                     <DetailsSection>
-                        <DetailsText>Nublado</DetailsText>
-                        <DetailsInfo>86%</DetailsInfo>
+                        <DetailsText>{weatherDetails? weatherDetails[0].main: ''}</DetailsText>
+                        <DetailsInfo>{rain? '': ''}</DetailsInfo>
                     </DetailsSection>
 
                     <DetailsSection>
                         <DetailsText>Umidade</DetailsText>
-                        <DetailsInfo>32%</DetailsInfo>
+                        <DetailsInfo>{weatherInfo? weatherInfo.humidity: ''}%</DetailsInfo>
                     </DetailsSection>
 
                     <DetailsSection>
                         <DetailsText>Vento</DetailsText>
-                        <DetailsInfo>4km/h</DetailsInfo>
+                        <DetailsInfo>{wind ? Math.trunc(wind.speed*3.6): ' '}Km/h</DetailsInfo>
                     </DetailsSection>
 
                    

@@ -4,16 +4,15 @@ import {WDisplayContainer, WDisplayInfo, WDisplayWrap, WInfoDetails, WInfoIcon, 
 
 const WeatherDisplay = ({city, weatherInfo, currentTime, currentData}) => {
 
-  let temp=Math.trunc(weatherInfo.temp - 273.15)
 
   return(
     <WDisplayContainer>
        <WDisplayWrap>
            <WMySocials>blablabla</WMySocials>
            <WDisplayInfo>
-               <WTemp>{temp}º</WTemp>
+               <WTemp>{weatherInfo? Math.trunc(weatherInfo.temp): ''}º</WTemp>
                <WInfoDetails>
-                  <WLocation>{city}</WLocation>
+                  <WLocation>{city? city: ''}</WLocation>
                   <WTime>{currentTime}{` - `}{currentData}</WTime>   
                </WInfoDetails>
                <WInfoIcon></WInfoIcon>
