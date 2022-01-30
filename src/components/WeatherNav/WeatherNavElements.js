@@ -5,7 +5,7 @@ export const NavContainer = styled.div`
     height: 100vh;
     width: 30%;
     z-index: 3;
-    backdrop-filter: blur(25px);  
+    backdrop-filter: blur(30px);  
     
     @media (max-width: 768px){
         display: none;
@@ -26,26 +26,27 @@ export const NavWrap= styled.div`
 export const NavLocation= styled.div`
     color: #ddd;
 `;
-
 export const NavLocationWrap= styled.div`
+    color: #;
 `;
+
 
 export const Form = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
    
+   
 `;
 
 export const SearchInput= styled.input`
     background-color: transparent;   
     height: 40px;
-    width: 50%;
+    width: 70%;
     outline: none !important;
     border:none;
     outline-width: 0;
-    color: #fff;
-    
+    color: #fff; 
 `;
 
 export const SearchBtn= styled.button`
@@ -64,6 +65,7 @@ export const NavLocationPlaces= styled.div`
 
 export const PlacesText= styled.p`
     padding: 10px;
+    color: #fff;
 `;
 
 export const Hr= styled.hr`
@@ -77,7 +79,7 @@ export const Hr= styled.hr`
 //WEATHER INFORMATIONS
 //--------------------
 export const NavWeatherDetails= styled.div`
-    color: #ddd;
+    color: #fff;
     width: 80%;
 `;
 

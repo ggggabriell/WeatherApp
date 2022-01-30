@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
-import { DetailsInfo, DetailsSection, DetailsText, Form, Hr, NavBlur, NavContainer, NavLocation, NavLocationPlaces, NavLocationWrap, NavWeatherDetails, NavWeatherTitle, NavWrap, PlacesText, SearchBtn, SearchInput } from './WeatherNavElements';
+import React from 'react';
 import {BsSearch} from 'react-icons/bs'
+import { 
+        DetailsInfo, DetailsSection, DetailsText,
+        Form, Hr, NavBlur, NavContainer, NavLocation,
+        NavLocationPlaces, NavLocationWrap, NavWeatherDetails,
+        NavWeatherTitle, NavWrap, PlacesText, SearchBtn, SearchInput
+    } from './WeatherNavElements';
 
 const WeatherNav = ({weatherInfo, weatherDetails, wind, handleChange, handleSubmit, input, rain}) => {
    

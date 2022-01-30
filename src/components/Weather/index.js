@@ -34,8 +34,7 @@ const WeatherApp = () => {
           horario: data.dt,
           weatherInfo: list[0].alldata.main, 
           weatherDetails: list[0].alldata.weather, 
-          wind: list[0].alldata.wind,
-          rain: list[0].alldata.rain,
+          wind: list[0].alldata.wind,         
         }
       ) 
       console.log(data)

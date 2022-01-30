@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 
-export const WContainer= styled.div`
-  
+export const WContainer= styled.div`  
 `
 
 export const WBg= styled.div`
@@ -18,7 +17,7 @@ export const WBg= styled.div`
     width: 100%; 
   
 `;
-
+//TIRAR A SATURAÇÃO DA IMAGEM COM RGBA 
 export const ImageBg= styled.img`
     width: 100%;
     height: 100%;
