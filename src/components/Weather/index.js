@@ -8,6 +8,8 @@ import WeatherData from '../../WeatherData'
 const WeatherApp = () => {
   const [data, setData]= useState([]);
   const [dataFormat, setDataFormat]= useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
   //Dia e o horario atual | currentTime e currentData
   const [currentTime, setCurrentTime]= useState(0);
   const [currentData, setCurrentData]= useState(0);
@@ -46,7 +48,6 @@ const WeatherApp = () => {
     setAtivar(false); 
   },[ativar])
   
-
   //Set Current Time
   const displayClock=()=>{
     setCurrentTime(new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}));
@@ -58,6 +59,13 @@ const WeatherApp = () => {
     window.onload=displayClock();
   },[])
 
+
+  //Toggle mobile
+  const toggle =()=>{
+    setIsOpen(!isOpen);
+    console.log(isOpen)
+  }
+
   return (
   <WContainer>
       <WBg>
@@ -65,13 +73,16 @@ const WeatherApp = () => {
       </WBg>
       <WWrap>
         <WeatherDisplay
+         toggle={toggle}
          city={dataFormat.cidade}
          weatherInfo={dataFormat.weatherInfo}
          currentTime={currentTime}
          currentData={currentData}
         />
 
-        <WeatherNav 
+        <WeatherNav
+        toggle={toggle}
+        isOpen={isOpen}
         weatherInfo={dataFormat.weatherInfo}
         weatherDetails={dataFormat.weatherDetails}
         wind={dataFormat.wind}

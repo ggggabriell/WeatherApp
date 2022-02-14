@@ -5,10 +5,13 @@ export const NavContainer = styled.div`
     height: 100vh;
     width: 30%;
     z-index: 3;
-    backdrop-filter: blur(30px);  
+    backdrop-filter: blur(30px);
+    transition: 0.5s ease-in-out; 
     
     @media (max-width: 768px){
-        display: none;
+        display: ${({isOpen})=> (isOpen? 'block': 'none')};
+        width: 100%;
+        position: absolute;
     }
     
 `;
@@ -55,6 +58,11 @@ export const SearchBtn= styled.button`
     height: 80px;
     font-size: 30px;
     cursor: pointer;
+
+    @media (max-width: 768px){
+        width: 60px;
+        height: 60px;
+    }
 `;
 
 export const NavLocationPlaces= styled.div`

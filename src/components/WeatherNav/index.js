@@ -7,11 +7,14 @@ import {
         NavWeatherTitle, NavWrap, PlacesText, SearchBtn, SearchInput
     } from './WeatherNavElements';
 
-const WeatherNav = ({weatherInfo, weatherDetails, wind, handleChange, handleSubmit, input, rain}) => {
+const WeatherNav = ({toggle, isOpen, weatherInfo, weatherDetails, wind, handleChange, handleSubmit, input, rain}) => {
    
 
   return (
-      <NavContainer>
+      <NavContainer
+        isOpen={isOpen}
+        
+      >
           <NavBlur/>
           <NavWrap>
               {/* Localização e a parte de pesquisa */}
@@ -34,8 +37,12 @@ const WeatherNav = ({weatherInfo, weatherDetails, wind, handleChange, handleSubm
                       </Form>
                   </NavLocationWrap>   
 
-                  <NavLocationPlaces>
-                  <Hr/>
+                  <NavLocationPlaces
+                    onClick={toggle}
+                  >
+                  <Hr
+                   onClick={toggle}
+                  />
                       <PlacesText>São Paulo</PlacesText>
                       <PlacesText>Rio de Janeiro</PlacesText>
                       <PlacesText>Natal</PlacesText>
@@ -43,7 +50,9 @@ const WeatherNav = ({weatherInfo, weatherDetails, wind, handleChange, handleSubm
               </NavLocation>
 
               {/* Detalhes do clima, umidade vento e etc */}
-               <NavWeatherDetails>
+               <NavWeatherDetails
+               onClick={toggle}
+               >
                      <Hr/>
                     <NavWeatherTitle>Detalhes do clima</NavWeatherTitle>
 

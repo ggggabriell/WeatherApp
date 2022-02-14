@@ -24,13 +24,19 @@ export const WDisplayWrap = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
-        height: 60%;
-        align-items: center;      
+        height: 90%;
 `;
 
 export const WMySocials = styled.div`
     font-size: 2rem;
     display: flex;
+`;
+
+export const MySocialsLink = styled.a`
+    font-size: 2rem;
+    padding-left: 15px;
+    text-decoration: none !important;
+    color: #fff;
 `;
 
 export const WDisplayInfo= styled.div`
@@ -84,3 +90,18 @@ export const WInfoIcon= styled.div`
     padding-left: 20px;
 `;
 
+// Mobile icon
+export const Mobileicon= styled.div`
+    display: none;
+
+    @media screen and (max-width: 768px){
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #fff;
+    }
+`;
