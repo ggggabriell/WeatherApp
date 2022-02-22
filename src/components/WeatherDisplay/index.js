@@ -1,9 +1,20 @@
-import React from 'react';
-import {Mobileicon, MySocialsLink, WDisplayContainer, WDisplayInfo, WDisplayWrap, WInfoDetails, WInfoIcon, WLocation, WMySocials, WTemp, WTime} from './WeatherDisplayElements'
+import React, { useContext } from 'react';
+import {
+        Mobileicon, MySocialsLink, WDisplayContainer, 
+        WDisplayInfo, WDisplayWrap, WInfoDetails, WInfoIcon,
+        WLocation, WMySocials, WTemp, WTime} 
+        from './WeatherDisplayElements'        
 import {FaBars, FaGithub, FaLinkedin} from 'react-icons/fa'
 
-const WeatherDisplay = ({toggle, city, weatherInfo, currentTime, currentData}) => {
+import { WeatherContext } from '../../hooks/useWeather';
 
+const WeatherDisplay = ({toggle}) => {
+  const {weatherData} = useContext(WeatherContext)
+  const {getCurrentData} = useContext(WeatherContext)
+
+  const {currentTime, currentData} = getCurrentData()
+
+  console.log(weatherData)
 
   return(
     <WDisplayContainer>
@@ -18,15 +29,17 @@ const WeatherDisplay = ({toggle, city, weatherInfo, currentTime, currentData}) =
            </WMySocials>
            <Mobileicon
             onClick={toggle}
-           >
-             
+           >           
               <FaBars />
            </Mobileicon>
            <WDisplayInfo>
-               <WTemp>{weatherInfo? Math.trunc(weatherInfo.temp): ''}º</WTemp>
+               <WTemp>{weatherData.main && Math.trunc(weatherData.main.temp)}º</WTemp>
                <WInfoDetails>
-                  <WLocation>{city? city: ''}</WLocation>
-                  <WTime>{currentTime}{` - `}{currentData}</WTime>   
+                  <WLocation>{weatherData.name && weatherData.name}</WLocation>
+
+                 {getCurrentData &&
+                  <WTime>{currentTime} {` - `} {currentData}</WTime>
+                 }  
                </WInfoDetails>
                <WInfoIcon></WInfoIcon>
            </WDisplayInfo>

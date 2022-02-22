@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {BsSearch} from 'react-icons/bs'
+import { WeatherContext } from '../../hooks/useWeather';
 import { 
         DetailsInfo, DetailsSection, DetailsText,
         Form, Hr, NavBlur, NavContainer, NavLocation,
@@ -7,7 +8,24 @@ import {
         NavWeatherTitle, NavWrap, PlacesText, SearchBtn, SearchInput
     } from './WeatherNavElements';
 
-const WeatherNav = ({toggle, isOpen, weatherInfo, weatherDetails, wind, handleChange, handleSubmit, input, rain}) => {
+const WeatherNav = ({toggle, isOpen}) => {
+    const {weatherData} = useContext(WeatherContext)
+    const {handleInput} = useContext(WeatherContext)
+
+    //PEGAR A CIDADE INFORMADA E MOSTRAR OS VALORES
+    const [input, setInput]= useState('');
+
+    const handleChange=(event)=>{
+        setInput(event.target.value)
+        console.log(input)
+    }
+
+    const handleSubmit=(event)=>{
+        event.preventDefault();
+
+        handleInput(input)
+    }
+    
    
 
   return (
@@ -57,18 +75,21 @@ const WeatherNav = ({toggle, isOpen, weatherInfo, weatherDetails, wind, handleCh
                     <NavWeatherTitle>Detalhes do clima</NavWeatherTitle>
 
                     <DetailsSection>
-                        <DetailsText>{weatherDetails? weatherDetails[0].main: ''}</DetailsText>
-                        <DetailsInfo>{rain? '': ''}</DetailsInfo>
+                        <DetailsText>{weatherData.weather && weatherData.weather[0].main}</DetailsText>
+                        <DetailsInfo>
+                            {weatherData.weather && 
+                        weatherData.weather[0].description[0].toUpperCase()+weatherData.weather[0].description.slice(1)}
+                        </DetailsInfo>
                     </DetailsSection>
 
                     <DetailsSection>
                         <DetailsText>Umidade</DetailsText>
-                        <DetailsInfo>{weatherInfo? weatherInfo.humidity: ''}%</DetailsInfo>
+                        <DetailsInfo>{weatherData.main && weatherData.main.humidity}%</DetailsInfo>
                     </DetailsSection>
 
                     <DetailsSection>
                         <DetailsText>Vento</DetailsText>
-                        <DetailsInfo>{wind ? Math.trunc(wind.speed*3.6): ' '}Km/h</DetailsInfo>
+                        <DetailsInfo>{weatherData.wind && weatherData.wind.speed}Km/h</DetailsInfo>
                     </DetailsSection>
 
                    
